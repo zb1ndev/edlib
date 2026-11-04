@@ -255,8 +255,6 @@ int8_t ed_piece_buffer_change(ed_piece_buffer_t* piece_buffer, ed_change_t* chan
         _ed_piece_free(&piece_buffer->pieces[i]);
     
     if (change->action_data_size == 0) {
-    
-        printf("3\n");
 
         // @note since this is a deletion, we shift the pieces to the right back over to the left
         memmove(&piece_buffer->pieces[start_piece_index], &piece_buffer->pieces[end_piece_index], sizeof(ed_piece_t) * (piece_buffer->piece_count - end_piece_index));
