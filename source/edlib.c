@@ -11,7 +11,7 @@ internal void _ed_piece_free(ed_piece_t* piece) {
 
 }
 
-internal inline int8_t _ed_append_line_offset(ed_piece_t* piece, uint64_t offset) {
+internal int8_t _ed_append_line_offset(ed_piece_t* piece, uint64_t offset) {
 
     if (piece->lo_data_count + 1 >= piece->lo_data_capacity) {
 
