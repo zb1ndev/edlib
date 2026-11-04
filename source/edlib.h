@@ -9,7 +9,7 @@ extern "C" {
 #endif // internal
 
 #if !defined(local_persist)
-#define local_persist                               static
+    #define local_persist                           static
 #endif // local_persist
 
 #include <stdio.h>
