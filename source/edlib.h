@@ -106,6 +106,13 @@ int64_t                 ed_piece_buffer_length      (ed_piece_buffer_t* piece_bu
 */
 int64_t                 ed_piece_buffer_line_count  (ed_piece_buffer_t* piece_buffer);
 
+/*  Returns the global offset of the line in the piece buffer.
+    @param piece_buffer A pointer to the piece buffer you want to get the line offset of.
+    @param line_number The line number you want to get the global offset of.
+    @returns `-1` on failure and the line count on success.
+*/
+int64_t                 ed_piece_buffer_get_line    (ed_piece_buffer_t* piece_buffer, uint64_t line_number);
+
 /*  Applies a change (insertion or deletion) to the piece buffer across a specified range.
     @param piece_buffer A pointer to the piece buffer you want to modify.
     @param change A pointer to an ed_change_t containing the change data you want to apply. 

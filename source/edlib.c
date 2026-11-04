@@ -221,6 +221,32 @@ int64_t ed_piece_buffer_line_count(ed_piece_buffer_t* piece_buffer) {
 
 }
 
+int64_t ed_piece_buffer_get_line(ed_piece_buffer_t* piece_buffer, uint64_t line_number) {
+
+    if (piece_buffer == NULL) {
+        fprintf(stderr, "error: ed_piece_buffer_get_line: invalid arguments\n");
+        return -1;
+    }
+
+    int64_t current_line_count  = 0,
+            result              = 0;
+
+    for (uint64_t i = 0; i < piece_buffer->piece_count; i++) {
+
+        const ed_piece_t* piece = &piece_buffer->pieces[i];
+        
+        if (current_line_count + piece->lo_data_count > line_number)
+            return result + (piece->lo_data[line_number - current_line_count]);
+    
+        current_line_count += piece->lo_data_count;
+        result += piece->length;
+
+    }
+
+    return -1;
+
+}
+
 int8_t ed_piece_buffer_change(ed_piece_buffer_t* piece_buffer, ed_change_t* change) {
 
     uint64_t buffer_length = ed_piece_buffer_length(piece_buffer);
